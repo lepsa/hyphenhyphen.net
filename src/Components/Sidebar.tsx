@@ -1,7 +1,6 @@
 import React from 'react';
 import './Sidebar.css'
 import Page from "../Data/Pages";
-import { Button } from 'react-bootstrap';
 
 type ItemProps =
   { name: string
@@ -36,7 +35,7 @@ export type SidebarProps =
   , setPage : (p:Page) => void
   }
 
-const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
+export const Sidebar: React.FunctionComponent<SidebarProps> = (props) => {
   const [activeLink, setActiveLink] = React.useState<number>(0);
   
   return (
