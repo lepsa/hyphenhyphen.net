@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Sidebar, { Item } from "./Components/Sidebar";
+import Page, { SelectPage } from './Data/Pages';
+import { Container } from 'react-bootstrap/lib/Tab';
+import { Col, Row } from 'react-bootstrap';
+
+const links : Array<Item> =
+  [ { name : "Foo", page : Page.Index }
+  , { name : "Bar", page : Page.Index }
+  ]
 
 function App() {
+  const [page, setPage] = React.useState<Page>(Page.Index);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          <Sidebar setPage={setPage} title="Menu" links={links} />
+        </Col>
+        <Col>
+          <main>
+            <SelectPage page={page}/>
+          </main>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
